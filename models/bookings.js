@@ -1,13 +1,12 @@
 const mongoose = require("mongoose");
 
-const citySchema = mongoose.Schema({
-  cityName: String,
-  main: String,
-  description: String,
-  tempMin: Number,
-  tempMax: Number,
+const bookingSchema = mongoose.Schema({
+  departure: String,
+  arrival: String,
+  date: Date,
+  price: Number,
 });
 
-const City = mongoose.model("cities", citySchema);
+const Booking = mongoose.model("bookings", bookingSchema);
 
-module.exports = City;
+module.exports = Booking;
