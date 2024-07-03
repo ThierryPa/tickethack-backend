@@ -11,7 +11,7 @@ router.get('/:departure/:arrival/:date', (req, res) => {
     const myDate = new Date(req.params.date);
     const minDate = moment(myDate).startOf('day');
     const maxDate = moment(myDate).endOf('day');
-    
+
     Trip.find({ departure: req.params.departure, arrival: req.params.arrival, date: { $gte: minDate, $lte: maxDate } }).then(trips => {
         // Si la requête n'est pas null ou vide
         if (trips != null && trips != "") {
