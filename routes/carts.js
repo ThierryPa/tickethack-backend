@@ -42,4 +42,17 @@ router.delete('/:id', (req, res) => {
     })
 });
 
+// GET all Carts
+router.get('/', (req, res) => {
+    Cart.find().then(cart => {
+        if(cart != null && cart != "") {
+            console.log(cart);
+            res.json(cart);
+        } else {
+            console.log("Get All Cart is empty");
+            res.json({ error: "Get All Cart is empty" });
+        }
+    })
+});
+
 module.exports = router;

@@ -35,4 +35,17 @@ router.post('/:id', (req, res) => {
     })
 });
 
+// GET all Bookings
+router.get('/', (req, res) => {
+    Booking.find().then(bookings => {
+        if(bookings != null && bookings != "") {
+            console.log(bookings);
+            res.json(bookings);
+        } else {
+            console.log("Get All Bookings is empty");
+            res.json({ error: "Get All Bookings is empty" });
+        }
+    })
+});
+
 module.exports = router;
