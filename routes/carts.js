@@ -31,7 +31,7 @@ router.post('/:id', (req, res) => {
 
 // DELETE un Cart
 router.delete('/:id', (req, res) => {
-    Cart.deleteOne({ id: req.params.id }).then(cart => {
+    Cart.deleteOne({ _id: req.params.id }).then(cart => {
         if(cart != null && cart != "") {
             console.log({cart});
             res.json({ cart });
