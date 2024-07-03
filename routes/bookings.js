@@ -19,7 +19,7 @@ router.post('/:id', (req, res) => {
         newBooking.save().then(addedBooking => {
             res.json({ addedBooking });
             // We delete our Cart after saved it to Booking
-            Cart.deleteOne({ id: req.params.id }).then(cartDelete => {
+            Cart.deleteOne({ _id: req.params.id }).then(cartDelete => {
                 if(cartDelete != null && cartDelete != "") {
                     console.log({cartDelete});
                 } else {
