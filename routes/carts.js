@@ -5,8 +5,8 @@ const Cart = require('../models/carts');
 const Trip = require('../models/trips');
 
 // POST un trip => Cart
-router.post('/:id', (req, res) => {
-    Trip.findById(req.params.id).then(trip => {
+router.post('/:_id', (req, res) => {
+    Trip.findById(req.params._id).then(trip => {
         console.log({trip});
         if (trip != null && trip != "") {
             // Creates new document with trip data
@@ -30,11 +30,11 @@ router.post('/:id', (req, res) => {
 });
 
 // DELETE un Cart
-router.delete('/:id', (req, res) => {
-    Cart.deleteOne({ _id: req.params.id }).then(cart => {
+router.delete('/:_id', (req, res) => {
+    Cart.deleteOne({ _id: req.params._id }).then(cart => {
         if(cart != null && cart != "") {
-            console.log({cart});
-            res.json({ cart });
+            console.log(cart);
+            res.json(cart);
         } else {
             console.log("Error in DELETE un trip au cart NOT FOUND");
             res.json({ error: "Error in DELETE un trip au Cart NOT FOUND" });

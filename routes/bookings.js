@@ -5,8 +5,8 @@ const Booking = require('../models/bookings');
 const Cart = require('../models/carts');
 
 // POST un Cart => Booking
-router.post('/:id', (req, res) => {
-    Cart.findById(req.params.id).then(cart => {
+router.post('/:_id', (req, res) => {
+    Cart.findById(req.params._id).then(cart => {
         if (cart != null && cart != "") {
             // Creates new document with trip data
             const newBooking = new Booking({
@@ -19,9 +19,9 @@ router.post('/:id', (req, res) => {
         newBooking.save().then(addedBooking => {
             res.json({ addedBooking });
             // We delete our Cart after saved it to Booking
-            Cart.deleteOne({ _id: req.params.id }).then(cartDelete => {
+            Cart.deleteOne({ _id: req.params._id }).then(cartDelete => {
                 if(cartDelete != null && cartDelete != "") {
-                    console.log({cartDelete});
+                    console.log(cartDelete);
                 } else {
                     console.log("Error in Cart.deleteOne NOT FOUND in Booking");
                 }
