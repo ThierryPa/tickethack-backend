@@ -6,8 +6,8 @@ const app = require('./app');
 it('GET /trips/:departure/:arrival/:date' , async () => {
     const res = await request(app).get('/trips/Lyon/Bruxelles/2024-07-02T08:32:03.428Z');
 
-    except(res.statusCode).toBe(200);
-    except(res.body.trips).toEqual( [
+    expect(res.statusCode).toBe(200);
+    expect(res.body).toEqual( [
         {
           "_id": "6683c090307305310845d374",
           "departure": "Lyon",
